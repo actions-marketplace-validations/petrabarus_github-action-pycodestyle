@@ -59,6 +59,12 @@ if [ -n "$INPUT_EXCLUDE" ]; then
     done
 fi
 
+# If empty then exit
+if [ -z "$FILES" ]; then
+    echo "No files to check"
+    exit 0
+fi
+
 pycodestyle $FILES | tee output.txt
 
 # if output.txt is not empty, output failed
