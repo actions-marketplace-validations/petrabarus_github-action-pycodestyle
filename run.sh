@@ -47,8 +47,20 @@ else
   FILES=$(find . -type f)
 fi
 
+# If empty then exit
+if [ -z "$FILES" ]; then
+    echo "No files to check"
+    exit 0
+fi
+
 # Filter FILES by extension '.py'
 FILES=$(echo "$FILES" | grep '\.py$')
+
+# If empty then exit
+if [ -z "$FILES" ]; then
+    echo "No files to check"
+    exit 0
+fi
 
 # If INPUT_EXCLUDE is set, exclude the files
 if [ -n "$INPUT_EXCLUDE" ]; then
